@@ -85,9 +85,18 @@ namespace Hospital_Assignment
         {
             selectedPatient = (Patient)lbxPatients.SelectedItem;
             if (lbxPatients.SelectedItem != null)
+            {
+                BitmapImage bloodImage = new BitmapImage();
+                bloodImage.BeginInit();
+                bloodImage.UriSource = new Uri(String.Format("pack://application:,,,/image/" + selectedPatient.Blood + ".png"));
+                bloodImage.EndInit();
+                imgPatientBT.Source = bloodImage;
                 lblPatientName.Content = selectedPatient.Name;
+            }
             else
                 lblPatientName.Content = "";
+
+            //imgPatientBT.Source = //"image/" + selectedPatient.Blood.ToString();
         }
 
         private void btnAddPatient_Click(object sender, RoutedEventArgs e)
