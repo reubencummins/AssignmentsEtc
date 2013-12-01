@@ -37,7 +37,9 @@ namespace Hospital_Assignment
             lbxWards.ItemsSource = Wards;
             Wards[0].Patients.Add(new Patient());
             Wards[1].Patients.Add(new Patient("Dexter Morgan"));
-        }
+            
+
+            }
 
         private void btnNewWard_Click(object sender, RoutedEventArgs e)
         {
@@ -60,6 +62,18 @@ namespace Hospital_Assignment
             }
         }
 
+        private BloodType getBloodType(UIElementCollection radioButtonList)
+        {
+            BloodType b = BloodType.O;
+            foreach (RadioButton r in radioButtonList)
+            {
+                if (r.IsChecked == true)
+                    b = (BloodType)Enum.Parse(typeof(BloodType), r.Content.ToString());
+            }
+            return b;
+
+        }
+
         private void lbxWards_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             selectedWard = (Ward)lbxWards.SelectedItem;
@@ -78,7 +92,10 @@ namespace Hospital_Assignment
 
         private void btnAddPatient_Click(object sender, RoutedEventArgs e)
         {
-
+            int patientAge = (DateTime.Today.Year - Convert.ToDateTime(datDob.Text).Year);
+            selectedWard.Patients.Add(new Patient(txtPatientName.Text,patientAge,getBloodType(stkBloodButton.Children)));
+            lbxPatients.ItemsSource = null;
+            lbxPatients.ItemsSource = selectedWard.Patients;
         }
     }
 }
