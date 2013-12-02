@@ -94,7 +94,13 @@ namespace Hospital_Assignment
                 lblPatientName.Content = selectedPatient.Name;
             }
             else
+            {
                 lblPatientName.Content = "";
+                BitmapImage bloodImage = new BitmapImage();
+                bloodImage.BeginInit();
+                bloodImage.UriSource = new Uri(String.Format("pack://application:,,,/image/blank.png"));
+                bloodImage.EndInit();
+            }
 
             //imgPatientBT.Source = //"image/" + selectedPatient.Blood.ToString();
         }

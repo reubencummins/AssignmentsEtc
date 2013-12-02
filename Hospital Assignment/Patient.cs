@@ -31,6 +31,8 @@ namespace Hospital_Assignment
             Name = name;
             Age = age;
             Blood = blood;
+            if (Name == "")
+                Name = "John Doe";
         }
         public Patient():this("John Doe", 20, BloodType.O)
         {
