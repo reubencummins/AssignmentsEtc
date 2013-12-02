@@ -34,10 +34,10 @@ namespace Hospital_Assignment
             Wards.Add(new Ward("Monty Python Memorial Ward", 7));
             Wards.Add(new Ward("Boring Ward", 15));
             PopulateWards(Wards);
-            lbxWards.ItemsSource = Wards;
             Wards[0].Patients.Add(new Patient());
             Wards[1].Patients.Add(new Patient("Dexter Morgan"));
-            
+
+            lbxWards.ItemsSource = Wards;
 
             }
 
@@ -45,7 +45,7 @@ namespace Hospital_Assignment
         {
             Wards.Add(new Ward(txtWardName.Text, (int)sldWardCap.Value));
             txtWardName.Text = "";
-            sldWardCap.Value = 0;
+            sldWardCap.Value = 1;
             lbxWards.ItemsSource = null;
             lbxWards.ItemsSource = Wards;
         }
@@ -118,6 +118,10 @@ namespace Hospital_Assignment
                 selectedWard.Patients.Add(new Patient(txtPatientName.Text, patientAge, getBloodType(stkBloodButton.Children)));
                 lbxPatients.ItemsSource = null;
                 lbxPatients.ItemsSource = selectedWard.Patients;
+
+                txtPatientName.Text = "";
+                datDob.Text = "1/1/2000";
+                
             }
             else
                 //tell the user to select a ward
