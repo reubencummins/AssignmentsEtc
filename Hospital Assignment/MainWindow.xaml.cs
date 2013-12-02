@@ -52,18 +52,19 @@ namespace Hospital_Assignment
 
         private void PopulateWards(List<Ward> list)
         {
-            int n = 0;
+            //add some patients to the wards
+            Random rand = new Random(System.Environment.TickCount);
             foreach (Ward w in list)
             {
-                w.Patients.Add(new Patient("James Doakes", 20 + n, BloodType.AB));
-                w.Patients.Add(new Patient("Harry Morgan", 59 - n, BloodType.B));
-                w.Patients.Add(new Patient("Faith Summers", 17 + n/2, BloodType.AB));
-                n += 20;
+                w.Patients.Add(new Patient("James Doakes", rand.Next(99), BloodType.AB));
+                w.Patients.Add(new Patient("Harry Morgan", rand.Next(99), BloodType.B));
+                w.Patients.Add(new Patient("Faith Summers", rand.Next(99), BloodType.AB));
             }
         }
 
         private BloodType getBloodType(UIElementCollection radioButtonList)
         {
+            //convert the selected radioButton to a BloodType
             BloodType b = BloodType.O;
             foreach (RadioButton r in radioButtonList)
             {
@@ -76,6 +77,7 @@ namespace Hospital_Assignment
 
         private void lbxWards_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            //update selectedWard and the patients pane
             selectedWard = (Ward)lbxWards.SelectedItem;
             if (selectedWard != null)
                 lbxPatients.ItemsSource = selectedWard.Patients;
@@ -83,23 +85,24 @@ namespace Hospital_Assignment
 
         private void lbxPatients_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            //update selectedPatient and the details pane
             selectedPatient = (Patient)lbxPatients.SelectedItem;
             if (lbxPatients.SelectedItem != null)
             {
+                //load the new image and put the patient's name in the label
                 BitmapImage bloodImage = new BitmapImage();
                 bloodImage.BeginInit();
                 bloodImage.UriSource = new Uri(String.Format("pack://application:,,,/image/" + selectedPatient.Blood + ".png"));
                 bloodImage.EndInit();
                 imgPatientBT.Source = bloodImage;
+                imgPatientBT.Visibility = Visibility.Visible;
                 lblPatientName.Content = selectedPatient.Name;
             }
             else
             {
+                //clear the details pane
                 lblPatientName.Content = "";
-                BitmapImage bloodImage = new BitmapImage();
-                bloodImage.BeginInit();
-                bloodImage.UriSource = new Uri(String.Format("pack://application:,,,/image/blank.png"));
-                bloodImage.EndInit();
+                imgPatientBT.Visibility = Visibility.Hidden;
             }
 
             //imgPatientBT.Source = //"image/" + selectedPatient.Blood.ToString();
@@ -107,10 +110,25 @@ namespace Hospital_Assignment
 
         private void btnAddPatient_Click(object sender, RoutedEventArgs e)
         {
-            int patientAge = (DateTime.Today.Year - Convert.ToDateTime(datDob.Text).Year);
-            selectedWard.Patients.Add(new Patient(txtPatientName.Text,patientAge,getBloodType(stkBloodButton.Children)));
-            lbxPatients.ItemsSource = null;
-            lbxPatients.ItemsSource = selectedWard.Patients;
+            
+            if (selectedWard != null)
+            //add a patient to the selected ward
+            {
+                int patientAge = (DateTime.Today.Year - Convert.ToDateTime(datDob.Text).Year);
+                selectedWard.Patients.Add(new Patient(txtPatientName.Text, patientAge, getBloodType(stkBloodButton.Children)));
+                lbxPatients.ItemsSource = null;
+                lbxPatients.ItemsSource = selectedWard.Patients;
+            }
+            else
+                //tell the user to select a ward
+                MessageBox.Show("You must select a ward to add the new patient to.");
+            //is there a better message box?
+        }
+
+        private void sldWardCap_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            //set the slider label as the value changes
+            lblWardCap.Content = (int)sldWardCap.Value;
         }
     }
 }

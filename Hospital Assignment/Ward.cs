@@ -18,6 +18,8 @@ namespace Hospital_Assignment
 	    {
             Name = name;
             Capacity = capacity;
+            if (Name == "")
+                Name = "Unnamed Ward";
 	    }
 
         public Ward():this ("New Ward", 10)
@@ -28,7 +30,7 @@ namespace Hospital_Assignment
         {
 
         }
-        public Ward(int capacity):this("New Ward", 10)
+        public Ward(int capacity):this("New Ward", capacity)
         {
 
         }

@@ -9,8 +9,15 @@
             <ColumnDefinition MinWidth="160"/>
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Column="0">
-            <Label FontWeight="Bold" FontSize="16">Ward</Label>
-            <ListBox Name="lbxWards" MinHeight="160" SelectionChanged="lbxWards_SelectionChanged"></ListBox>
+            <StackPanel.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFA5D2F3" Offset="0"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </StackPanel.Background>
+            <Label FontWeight="Bold" FontSize="16" Background="#FFE2EEF7">Ward
+            </Label>
+            <ListBox Name="lbxWards" MinHeight="160" SelectionChanged="lbxWards_SelectionChanged"/>
             <Expander Header="Add Ward">
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -25,16 +32,25 @@
                     <Label Grid.Row="0" Grid.Column="0" Content="Name"/>
                     <Label Grid.Row="1" Grid.Column="0" Content="Capacity"/>
                     <TextBox Name="txtWardName" Grid.Row="0" Grid.Column="1"/>
-                    <Slider Name="sldWardCap" Grid.Row="1" Grid.Column="1" AutoToolTipPlacement="BottomRight" Maximum="20" Minimum="1" TickFrequency="5" TickPlacement="BottomRight" SmallChange="1" LargeChange="5"/>
-                    <Label Name="lblWardCap" Grid.Row="1" Grid.Column="1" Content="1"/>
+                    <DockPanel  Grid.Row="1" Grid.Column="1">
+                        <Label DockPanel.Dock="Right" Name="lblWardCap" Content="1" Width="26"/>
+                        <Slider Name="sldWardCap" Maximum="20" Minimum="1" ValueChanged="sldWardCap_ValueChanged" SmallChange="1"/>
+                    </DockPanel>
                     <Button Name="btnNewWard" Grid.Row="2" Grid.Column="1" Content="Add New Ward" Height="22" VerticalAlignment="Bottom" Click="btnNewWard_Click"/>
                 </Grid>
             </Expander>
         </StackPanel>
 
         <StackPanel Grid.Column="1">
-            <Label FontWeight="Bold" FontSize="16">Patients</Label>
-            <ListBox Name="lbxPatients" MinHeight="160" SelectionChanged="lbxPatients_SelectionChanged"></ListBox>
+            <StackPanel.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFA5D2F3" Offset="0"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </StackPanel.Background>
+            <Label FontWeight="Bold" FontSize="16" Background="#FFE2EEF7">Patients
+            </Label>
+            <ListBox Name="lbxPatients" MinHeight="160" SelectionChanged="lbxPatients_SelectionChanged"/>
             <Expander Header="Add Patient">
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -50,7 +66,7 @@
                     <Label Grid.Row="0" Grid.Column="0" Content="Name"/>
                     <Label Grid.Row="1" Grid.Column="0" Content="D.o.B"/>
                     <TextBox x:Name="txtPatientName" Grid.Row="0" Grid.Column="1"/>
-                    <DatePicker x:Name="datDob" Grid.Row="1" Grid.Column="1"/>
+                    <DatePicker x:Name="datDob" Grid.Row="1" Grid.Column="1" Text="01/01/2000"/>
                     <Label Grid.Row="2" Grid.Column="0" Content="Blood Type"/>
                     <StackPanel x:Name="stkBloodButton" Grid.Row="2" Grid.Column="1" Orientation="Horizontal">
                         <RadioButton Content="A"/>
@@ -64,9 +80,9 @@
             </Expander>
         </StackPanel>
         <StackPanel Grid.Column="2">
-            <Label Content="Details" FontWeight="Bold" FontSize="16"/>
+            <Label Content="Details" FontWeight="Bold" FontSize="16" Background="#FFE2EEF7"/>
             <Label Name="lblPatientName" Content=" " FontWeight="Bold"/>
-            <Image Name="imgPatientBT" Width="150" />
+            <Image Name="imgPatientBT" Width="150" Visibility="Hidden" />
         </StackPanel>
     </Grid>
 </Window>
