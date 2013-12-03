@@ -15,7 +15,7 @@ namespace Hospital_Assignment
             get; 
             set; 
         }
-        public int Age 
+        public DateTime DOB 
         { 
             get; 
             set; 
@@ -26,30 +26,31 @@ namespace Hospital_Assignment
             set;
         }
 
-        public Patient(string name, int age, BloodType blood)
+        public Patient(string name, DateTime dOB, BloodType blood)
         {
             Name = name;
-            Age = age;
+            DOB = dOB;
             Blood = blood;
             if (Name == "")
                 Name = "John Doe";
         }
-        public Patient():this("John Doe", 20, BloodType.O)
+        public Patient():this("John Doe", DateTime.Now, BloodType.O)
         {
         }
-        public Patient( string name):this(name, 20, BloodType.O)
+        public Patient( string name):this(name, DateTime.Now, BloodType.O)
         {
         }
-        public Patient (int age):this("John Doe", age, BloodType.O)
+        public Patient (DateTime dOB):this("John Doe", dOB, BloodType.O)
         {
         }
-        public Patient (BloodType blood):this("John Doe", 20, blood)
+        public Patient (BloodType blood):this("John Doe", DateTime.Now, blood)
 	    {
 	    }
 
         public override string ToString()
         {
-            return String.Format("{0} Age: {1} Blood Type: {2}", Name, Age, Blood);
+            int age = DateTime.Today.Year - DOB.Year;
+            return String.Format("{0} Age: {1} Blood Type: {2}", Name, age, Blood);
         }
     }
     

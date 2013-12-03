@@ -18,27 +18,27 @@
             <Label FontWeight="Bold" FontSize="16" Background="#FFE2EEF7" Content="Wards"/>
             <ListBox Name="lbxWards" MinHeight="160" SelectionChanged="lbxWards_SelectionChanged"/>
             <Expander Header="Add Ward">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
-                            <ColumnDefinition MinWidth="100"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                        </Grid.RowDefinitions>
-                        <Label Grid.Row="0" Grid.Column="0" Content="Name"/>
-                        <Label Grid.Row="1" Grid.Column="0" Content="Capacity"/>
-                        <TextBox Name="txtWardName" Grid.Row="0" Grid.Column="1"/>
-                        <DockPanel  Grid.Row="1" Grid.Column="1">
-                            <Label DockPanel.Dock="Right" Name="lblWardCap" Content="1" Width="26"/>
-                            <Slider Name="sldWardCap" Maximum="20" Minimum="1" ValueChanged="sldWardCap_ValueChanged" SmallChange="1"/>
-                        </DockPanel>
-                        <Button Name="btnNewWard" Grid.Row="2" Grid.Column="1" Content="Add New Ward" Height="22" VerticalAlignment="Bottom" Click="btnNewWard_Click"/>
-                    </Grid>
-                </Expander>
-            
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition MinWidth="100"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="0" Grid.Column="0" Content="Name"/>
+                    <Label Grid.Row="1" Grid.Column="0" Content="Capacity"/>
+                    <TextBox Name="txtWardName" Grid.Row="0" Grid.Column="1"/>
+                    <DockPanel  Grid.Row="1" Grid.Column="1">
+                        <Label DockPanel.Dock="Right" Name="lblWardCap" Content="1" Width="26"/>
+                        <Slider Name="sldWardCap" Maximum="20" Minimum="1" ValueChanged="sldWardCap_ValueChanged" SmallChange="1"/>
+                    </DockPanel>
+                    <Button Name="btnNewWard" Grid.Row="2" Grid.Column="1" Content="Add New Ward" Height="22" VerticalAlignment="Bottom" Click="btnNewWard_Click"/>
+                </Grid>
+            </Expander>
+
         </StackPanel>
 
         <StackPanel Grid.Column="1">
@@ -50,6 +50,7 @@
             </StackPanel.Background>
             <Label FontWeight="Bold" FontSize="16" Background="#FFE2EEF7" Content="Patients"/>
             <ListBox Name="lbxPatients" MinHeight="160" SelectionChanged="lbxPatients_SelectionChanged"/>
+            <Border BorderThickness="1">
                 <Expander Header="Add Patient">
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -68,15 +69,16 @@
                         <DatePicker x:Name="datDob" Grid.Row="1" Grid.Column="1" Text="01/01/2000"/>
                         <Label Grid.Row="2" Grid.Column="0" Content="Blood Type"/>
                         <StackPanel x:Name="stkBloodButton" Grid.Row="2" Grid.Column="1" Orientation="Horizontal">
-                            <RadioButton Content="A" GroupName="Blood"/>
-                            <RadioButton Content="B" GroupName="Blood"/>
-                            <RadioButton Content="AB" GroupName="Blood"/>
-                            <RadioButton Content="O" GroupName="Blood"/>
+                            <RadioButton Content="A" GroupName="Blood" Margin="0,0,5,0"/>
+                            <RadioButton Content="B" GroupName="Blood" Margin="0,0,5,0"/>
+                            <RadioButton Content="AB" GroupName="Blood" Margin="0,0,5,0"/>
+                            <RadioButton Content="O" GroupName="Blood" Margin="0,0,5,0"/>
                         </StackPanel>
                         <!--Add Radio Button List-->
                         <Button x:Name="btnAddPatient" MaxWidth="100" Grid.Row="3" Grid.Column="1" Height="22" VerticalAlignment="Bottom" Click="btnAddPatient_Click" Content="Add New Patient"/>
                     </Grid>
                 </Expander>
+            </Border>
         </StackPanel>
         <StackPanel Grid.Column="2">
             <StackPanel.Background>

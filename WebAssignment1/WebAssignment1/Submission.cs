@@ -38,10 +38,21 @@ namespace WebAssignment1
 
         public Submission(string childName,string childSurname,DateTime childDOB, string childPPS, RadioButtonList childGender, string adultName, string adultSurname, RadioButtonList rel, string address1, string address2, string addressTown, string addressCounty, string phone1, string phone2, string email1, string email2, CheckBoxList days, RadioButtonList TimeButtons)
         {
-            CName = childName; CSName = childSurname; CDOB = childDOB; CPPS = childPPS; CGender = (Gender)Enum.Parse((typeof(Gender)),childGender.SelectedValue);
-            AName = adultName; ASName = adultSurname; Relat = rel;
-            Address1 = address1; Address2 = address2; AddressTown = addressTown; AddressCounty = addressCounty;
-            Phone1 = phone1; Phone2 = phone2; Email1 = email1; Email2 = email2;
+            CName = childName;
+            CSName = childSurname;CDOB = childDOB;
+            CPPS = childPPS;
+            CGender = (Gender)Enum.Parse((typeof(Gender)),childGender.SelectedValue);
+            AName = adultName;
+            ASName = adultSurname;
+            Relat = rel;
+            Address1 = address1;
+            Address2 = address2;
+            AddressTown = addressTown;
+            AddressCounty = addressCounty;
+            Phone1 = phone1;
+            Phone2 = phone2;
+            Email1 = email1;
+            Email2 = email2;
             //Better way to get days?
             Days = days;
 

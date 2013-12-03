@@ -61,9 +61,9 @@ namespace Hospital_Assignment
             Random rand = new Random(System.Environment.TickCount);
             foreach (Ward w in list)
             {
-                w.Patients.Add(new Patient("James Doakes", rand.Next(99), BloodType.AB));
-                w.Patients.Add(new Patient("Harry Morgan", rand.Next(99), BloodType.B));
-                w.Patients.Add(new Patient("Faith Summers", rand.Next(99), BloodType.AB));
+                w.Patients.Add(new Patient("James Doakes", DateTime.Parse("10/10/1970"), BloodType.AB));
+                w.Patients.Add(new Patient("Harry Morgan", DateTime.Parse("10/10/1980"), BloodType.B));
+                w.Patients.Add(new Patient("Faith Summers", DateTime.Parse("10/10/1955"), BloodType.AB));
             }
         }
 
@@ -119,8 +119,8 @@ namespace Hospital_Assignment
             if (selectedWard != null)
             //add a patient to the selected ward
             {
-                int patientAge = (DateTime.Today.Year - Convert.ToDateTime(datDob.Text).Year);
-                selectedWard.Patients.Add(new Patient(txtPatientName.Text, patientAge, getBloodType(stkBloodButton.Children)));
+                
+                selectedWard.Patients.Add(new Patient(txtPatientName.Text, DateTime.Parse(datDob.Text), getBloodType(stkBloodButton.Children)));
                
 
                 txtPatientName.Text = "";
