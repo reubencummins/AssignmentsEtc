@@ -1,0 +1,79 @@
+﻿body {
+    font-family:Tahoma,sans-serif;
+    color:#1b1919;
+    background-color:skyblue;
+}
+
+
+h2  {
+    float:left;
+    background-color:aliceblue;
+    border-radius:4px;
+    width:100%;
+}
+
+.validator  {
+    color:red;
+    float:left;
+}
+
+
+.left   {
+    float:left;
+}
+
+.formLabel  {
+    width:50%;
+    float:left;
+}
+
+.formBox    {
+    float:left;
+    margin-bottom:5px;
+}
+
+
+.button {
+    margin:20px;
+    float:left;
+}
+
+
+div {
+    background-color:white;
+    border-radius:5px;
+}
+
+.summary    {
+    background-color:aliceblue;
+    float:left;
+    width:100%;
+}
+
+
+form {
+    width: 400px;
+    margin:auto;
+    border:5px solid white;
+    border-radius:5px;
+    background-color:white;
+}
+
+#txtPRel    {
+    margin-left:50%;
+}
+
+#cblDays    {
+    margin-left:40%;
+}
+
+#ValidationSummary1 {
+    width:100%;
+}
+
+h1  {
+    float:left;
+    width:100%;
+    background-color:aliceblue;
+    border-radius:4px;
+}
