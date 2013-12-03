@@ -15,8 +15,7 @@
                     <GradientStop Color="White" Offset="1"/>
                 </LinearGradientBrush>
             </StackPanel.Background>
-            <Label FontWeight="Bold" FontSize="16" Background="#FFE2EEF7">Ward
-            </Label>
+            <Label FontWeight="Bold" FontSize="16" Background="#FFE2EEF7" Content="Wards"/>
             <ListBox Name="lbxWards" MinHeight="160" SelectionChanged="lbxWards_SelectionChanged"/>
             <Expander Header="Add Ward">
                     <Grid>
@@ -49,10 +48,8 @@
                     <GradientStop Color="White" Offset="1"/>
                 </LinearGradientBrush>
             </StackPanel.Background>
-            <Label FontWeight="Bold" FontSize="16" Background="#FFE2EEF7">Patients
-            </Label>
+            <Label FontWeight="Bold" FontSize="16" Background="#FFE2EEF7" Content="Patients"/>
             <ListBox Name="lbxPatients" MinHeight="160" SelectionChanged="lbxPatients_SelectionChanged"/>
-            <GroupBox>
                 <Expander Header="Add Patient">
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -80,7 +77,6 @@
                         <Button x:Name="btnAddPatient" MaxWidth="100" Grid.Row="3" Grid.Column="1" Height="22" VerticalAlignment="Bottom" Click="btnAddPatient_Click" Content="Add New Patient"/>
                     </Grid>
                 </Expander>
-            </GroupBox>
         </StackPanel>
         <StackPanel Grid.Column="2">
             <StackPanel.Background>
