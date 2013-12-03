@@ -34,7 +34,6 @@ namespace WebAssignment1
                 txtName2.Text = sub.CSName;
                 txtDOB.Text = sub.CDOB.ToString("d");
                 txtPPS.Text = sub.CPPS;
-                rblGender.SelectedValue = sub.CGender.ToString();
                 txtPName.Text = sub.AName;
                 txtPSName.Text = sub.ASName;
                 txtAddress1.Text = sub.Address1;
@@ -45,6 +44,15 @@ namespace WebAssignment1
                 txtPhone2.Text = sub.Phone2;
                 txtEmail.Text = sub.Email1;
                 txtEmail2.Text = sub.Email2;
+                //foreach (ListItem l in rblGender.Items)
+                //{
+                //    if (l is RadioButton)
+                //    {
+                //        RadioButton r = (RadioButton)l;
+                //        if (r.Text == sub.CGender.ToString())
+                //            r.Checked = true;
+                //    }
+                //}
 
             }
         }
