@@ -19,6 +19,12 @@ namespace Hospital_Assignment
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+    /// 
+    enum BloodType
+    {
+        A, B, AB, O
+    }
+
     public partial class MainWindow : Window
     {
         ObservableCollection<Ward> Wards = new ObservableCollection<Ward>();
