@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,7 +21,7 @@ namespace Hospital_Assignment
     /// </summary>
     public partial class MainWindow : Window
     {
-        List<Ward> Wards = new List<Ward>();
+        ObservableCollection<Ward> Wards = new ObservableCollection<Ward>();
         Ward selectedWard;
         Patient selectedPatient;
 
@@ -46,11 +47,9 @@ namespace Hospital_Assignment
             Wards.Add(new Ward(txtWardName.Text, (int)sldWardCap.Value));
             txtWardName.Text = "";
             sldWardCap.Value = 1;
-            lbxWards.ItemsSource = null;
-            lbxWards.ItemsSource = Wards;
         }
 
-        private void PopulateWards(List<Ward> list)
+        private void PopulateWards(ObservableCollection<Ward> list)
         {
             //add some patients to the wards
             Random rand = new Random(System.Environment.TickCount);
@@ -68,7 +67,7 @@ namespace Hospital_Assignment
             BloodType b = BloodType.O;
             foreach (RadioButton r in radioButtonList)
             {
-                if (r.IsChecked == true)
+                if ((bool)r.IsChecked)
                     b = (BloodType)Enum.Parse(typeof(BloodType), r.Content.ToString());
             }
             return b;
@@ -116,8 +115,7 @@ namespace Hospital_Assignment
             {
                 int patientAge = (DateTime.Today.Year - Convert.ToDateTime(datDob.Text).Year);
                 selectedWard.Patients.Add(new Patient(txtPatientName.Text, patientAge, getBloodType(stkBloodButton.Children)));
-                lbxPatients.ItemsSource = null;
-                lbxPatients.ItemsSource = selectedWard.Patients;
+               
 
                 txtPatientName.Text = "";
                 datDob.Text = "1/1/2000";

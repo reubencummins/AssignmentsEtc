@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,7 +11,7 @@ namespace Hospital_Assignment
     {
         public string Name { get; set; }
         public int Capacity { get; set; }
-        public List<Patient> Patients = new List<Patient>();
+        public ObservableCollection<Patient> Patients = new ObservableCollection<Patient>();
 
 
 
