@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Hospital_Assignment
 {
-    enum BloodType { A, B, AB, O }
+
     
 
     class Patient
