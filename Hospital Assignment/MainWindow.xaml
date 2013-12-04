@@ -16,7 +16,7 @@
                 </LinearGradientBrush>
             </StackPanel.Background>
             <Label FontWeight="Bold" FontSize="16" Background="#FFE2EEF7" Content="Wards"/>
-            <ListBox Name="lbxWards" MinHeight="160" SelectionChanged="lbxWards_SelectionChanged"/>
+            <ListBox Name="lbxWards" MinHeight="160" SelectionChanged="lbxWards_SelectionChanged" ScrollViewer.VerticalScrollBarVisibility="Visible" MaxHeight="160"/>
             <Expander Header="Add Ward">
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -49,7 +49,7 @@
                 </LinearGradientBrush>
             </StackPanel.Background>
             <Label FontWeight="Bold" FontSize="16" Background="#FFE2EEF7" Content="Patients"/>
-            <ListBox Name="lbxPatients" MinHeight="160" SelectionChanged="lbxPatients_SelectionChanged"/>
+            <ListBox Name="lbxPatients" MinHeight="160" SelectionChanged="lbxPatients_SelectionChanged" ScrollViewer.VerticalScrollBarVisibility="Visible" MaxHeight="160"/>
             <Border BorderThickness="1">
                 <Expander Header="Add Patient">
                     <Grid>

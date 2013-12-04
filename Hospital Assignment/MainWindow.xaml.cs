@@ -116,7 +116,7 @@ namespace Hospital_Assignment
         private void btnAddPatient_Click(object sender, RoutedEventArgs e)
         {
             
-            if (selectedWard != null)
+            if (selectedWard != null && selectedWard.Patients.Count <= selectedWard.Capacity)
             //add a patient to the selected ward
             {
                 
@@ -129,7 +129,7 @@ namespace Hospital_Assignment
             }
             else
                 //tell the user to select a ward
-                MessageBox.Show("You must select a ward to add the new patient to.");
+                MessageBox.Show("You must select a ward with free space to add a patient.");
             //is there a better message box?
         }
 
