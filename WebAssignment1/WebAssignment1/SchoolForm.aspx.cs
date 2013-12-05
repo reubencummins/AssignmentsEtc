@@ -27,7 +27,7 @@ namespace WebAssignment1
             //set min and max dates based on today's date
             RangeValidator1.MaximumValue = (DateTime.Today - (new TimeSpan(365 * 3, 0, 0, 0))).ToString("d");
             RangeValidator1.MinimumValue = (DateTime.Today - (new TimeSpan(365 * 5, 0, 0, 0))).ToString("d");
-            if (Session["sub"] !=null)
+            if (Session["sub"] !=null && !IsPostBack)
             {
                 Submission sub = (Submission)Session["sub"];
                 txtName.Text = sub.CName;
@@ -44,16 +44,32 @@ namespace WebAssignment1
                 txtPhone2.Text = sub.Phone2;
                 txtEmail.Text = sub.Email1;
                 txtEmail2.Text = sub.Email2;
-                //foreach (ListItem l in rblGender.Items)
-                //{
-                //    if (l is RadioButton)
-                //    {
-                //        RadioButton r = (RadioButton)l;
-                //        if (r.Text == sub.CGender.ToString())
-                //            r.Checked = true;
-                //    }
-                //}
-
+                txtPRel.Text = sub.OtherRel;
+                foreach (ListItem l in rdbPRel.Items)
+                {
+                    if (l.Text == sub.Relat.SelectedItem.Text)
+                        l.Selected = true;
+                }
+                foreach (ListItem l in rblGender.Items)
+                {
+                    if (l.Text == sub.CGender.ToString())
+                        l.Selected = true;
+                }
+                foreach (ListItem l in rblTime.Items)
+                {
+                    if (l.Text == sub.Time)
+                        l.Selected = true;
+                }
+                foreach (ListItem l in cblDays.Items)
+                {
+                    foreach (ListItem day in sub.Days.Items)
+                    {
+                        if (day.Selected && day.Text == l.Text)
+                        {
+                            l.Selected = true;
+                        }
+                    }
+                }
             }
         }
 
@@ -63,14 +79,8 @@ namespace WebAssignment1
         {
             if (Page.IsValid)
             {
-                //Relationship rel;
-                //if (rdbPRel.SelectedIndex=0)
-                //    rel = father;
-
-                
-
                 //create a submission object
-                Submission sub = new Submission(txtName.Text, txtName2.Text, DateTime.Parse(txtDOB.Text), txtPPS.Text, rblGender, txtPName.Text, txtPSName.Text,rdbPRel, txtAddress1.Text, txtAddress2.Text, txtAddress3.Text, txtAddress4.Text, txtPhone.Text, txtPhone2.Text, txtEmail.Text, txtEmail2.Text, cblDays, rblTime);
+                Submission sub = new Submission(txtName.Text, txtName2.Text, DateTime.Parse(txtDOB.Text), txtPPS.Text, rblGender, txtPName.Text, txtPSName.Text,rdbPRel, txtPRel.Text, txtAddress1.Text, txtAddress2.Text, txtAddress3.Text, txtAddress4.Text, txtPhone.Text, txtPhone2.Text, txtPhone3.Text, txtEmail.Text, txtEmail2.Text, cblDays, rblTime);
                 Session["sub"] = sub;
                 Response.Redirect("Response.aspx");
             }
@@ -117,9 +127,6 @@ namespace WebAssignment1
                 txtPRel.Enabled = false;
         }
 
-        protected void rblTime_SelectedIndexChanged(object sender, EventArgs e)
-        {
 
-        }
     }
 }

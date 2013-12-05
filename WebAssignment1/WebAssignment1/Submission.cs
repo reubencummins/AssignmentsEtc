@@ -18,6 +18,7 @@ namespace WebAssignment1
         public string AName { get; set; }
         public string ASName { get; set; }
         public RadioButtonList Relat;
+        public string OtherRel { get; set; }
         public string Relationship;
         public string Address1 { get; set; }
         public string Address2 { get; set; }
@@ -25,6 +26,7 @@ namespace WebAssignment1
         public string AddressCounty { get; set; }
         public string Phone1 { get; set; }
         public string Phone2 { get; set; }
+        public string Phone3 { get; set; }
         public string Email1 { get; set; }
         public string Email2 { get; set; }
         public CheckBoxList Days;
@@ -36,7 +38,7 @@ namespace WebAssignment1
         double dayCost;
         int selectedDays = 0;
 
-        public Submission(string childName,string childSurname,DateTime childDOB, string childPPS, RadioButtonList childGender, string adultName, string adultSurname, RadioButtonList rel, string address1, string address2, string addressTown, string addressCounty, string phone1, string phone2, string email1, string email2, CheckBoxList days, RadioButtonList TimeButtons)
+        public Submission(string childName,string childSurname,DateTime childDOB, string childPPS, RadioButtonList childGender, string adultName, string adultSurname, RadioButtonList rel, string otherRel, string address1, string address2, string addressTown, string addressCounty, string phone1, string phone2, string phone3, string email1, string email2, CheckBoxList days, RadioButtonList TimeButtons)
         {
             CName = childName;
             CSName = childSurname;CDOB = childDOB;
@@ -45,16 +47,20 @@ namespace WebAssignment1
             AName = adultName;
             ASName = adultSurname;
             Relat = rel;
+            OtherRel = otherRel;
             Address1 = address1;
             Address2 = address2;
             AddressTown = addressTown;
             AddressCounty = addressCounty;
             Phone1 = phone1;
             Phone2 = phone2;
+            Phone3 = phone3;
             Email1 = email1;
             Email2 = email2;
-            //Better way to get days?
             Days = days;
+
+
+
 
             //set string and cost for chosen time
             Time = TimeButtons.SelectedValue;
@@ -79,10 +85,8 @@ namespace WebAssignment1
                 default:
                     break;
             }
-            if (Relat.SelectedValue == "Other")
+            if (Relat.SelectedValue == "Other (Please Specify)")
                 Relationship = "child";
-
-            
         }
 
         private string DaysString()
@@ -113,7 +117,7 @@ namespace WebAssignment1
         private double GetCost()
         {
 
-            //Calculate the cost
+            //Calculate the cost based on the days selected
             foreach (ListItem li in Days.Items)
             {
                 if (li.Selected)
@@ -127,12 +131,9 @@ namespace WebAssignment1
             return selectedDays * dayCost * pay;
         }
 
-        
-
-
-
         public override string ToString()
         {
+            //make a nice string for the summary page
             StringBuilder sb = new StringBuilder();
             sb.Append(String.Format("<p>{0} {1}, you have registered your {2} {3} for a {4} place on {5}.</p>", AName, ASName, Relationship, CName, Time, DaysString()));
             sb.Append(String.Format("<p>{0} date of birth is {1} and  {2} PPS number is {3}.</p>", pronounC, CDOB.ToString("d"), pronoun, CPPS));
