@@ -8,23 +8,25 @@ using Microsoft.Xna.Framework.Input;
 
 namespace Conversation
 {
+    
     enum Stat { angry, sad, desperate,  }
     enum Gender { male, female }
-    class Actor
+    class Actor : Sprite
     {
         public string Name { get; set; }
         public Stat Personality { get; set; }
         public Gender ActorGender { get; set; }
         int patience;
+        Dialog speech;
 
 
-        public Actor(Texture2D texture, Gender actorGender,string name,Stat personality)
+        public Actor(Texture2D texture, Gender actorGender,string name,Stat personality,Texture2D dialogTexture,SpriteFont dialogFont):base(texture,new Vector2(50,50),0)
         {
             Name = name;
             Personality = personality;
             ActorGender = actorGender;
             patience=3;
-            Dialog speech = new Dialog();
+            speech = new Dialog(dialogTexture,dialogFont);
         }
 
         public void Respond(Line lineIn)
@@ -35,9 +37,12 @@ namespace Conversation
             }
         }
 
-        public void Draw()
+        public void Draw(SpriteBatch spriteBatch)
         {
-
+            spriteBatch.Begin();
+            spriteBatch.Draw(spriteImage,new Rectangle(50,50,spriteImage.Width,spriteImage.Height), Color.White);
+            speech.Draw(spriteBatch);
+            spriteBatch.End();
         }
     }
 }
