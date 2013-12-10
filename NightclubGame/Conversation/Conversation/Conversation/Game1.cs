@@ -19,6 +19,12 @@ namespace Conversation
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         Texture2D bg;
+        List<Actor> Patrons = new List<Actor>();
+        List<Texture2D> PatronSprites = new List<Texture2D>();
+        Texture2D BouncerSprite;
+        Texture2D BarmanSprite;
+        Actor Bouncer;
+        Actor Barman;
 
         public Game1()
         {
@@ -48,6 +54,7 @@ namespace Conversation
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
             bg = Content.Load<Texture2D>("bg.png");
+
 
             // TODO: use this.Content to load your game content here
         }
