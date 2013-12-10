@@ -57,11 +57,11 @@ namespace Conversation
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            Background = Content.Load<Texture2D>("bg.png");
-            BouncerSprite = Content.Load<Texture2D>("bouncer.png");
-            BarmanSprite = Content.Load<Texture2D>("barman.png");
-            DialogBack = Content.Load<Texture2D>("bg.png");
-            DialogFont = Content.Load<SpriteFont>("Dialog.spritefont");
+            Background = Content.Load<Texture2D>("bg");
+            BouncerSprite = Content.Load<Texture2D>("bouncer");
+            BarmanSprite = Content.Load<Texture2D>("barman");
+            DialogBack = Content.Load<Texture2D>("bg");
+            DialogFont = Content.Load<SpriteFont>("Dialog");
             Barman = new Actor(BarmanSprite, Gender.male, "Barman", Stat.desperate, DialogBack, DialogFont);
             Bouncer = new Actor(BarmanSprite, Gender.male, "Bouncer", Stat.angry, DialogBack, DialogFont);
 
