@@ -106,7 +106,8 @@ namespace Conversation
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-
+            if (ActiveActor != null)
+                ActiveActor.Draw(spriteBatch);
             // TODO: Add your drawing code here
 
             base.Draw(gameTime);
