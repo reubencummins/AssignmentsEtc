@@ -18,13 +18,17 @@ namespace Conversation
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        Texture2D bg;
+        Texture2D Background;
         List<Actor> Patrons = new List<Actor>();
         List<Texture2D> PatronSprites = new List<Texture2D>();
         Texture2D BouncerSprite;
         Texture2D BarmanSprite;
         Actor Bouncer;
         Actor Barman;
+        Texture2D DialogBack;
+        SpriteFont DialogFont;
+
+        Actor ActiveActor;
 
         public Game1()
         {
@@ -53,8 +57,15 @@ namespace Conversation
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            bg = Content.Load<Texture2D>("bg.png");
+            Background = Content.Load<Texture2D>("bg.png");
+            BouncerSprite = Content.Load<Texture2D>("");
+            BarmanSprite = Content.Load<Texture2D>("");
+            DialogBack = Content.Load<Texture2D>("");
+            DialogFont = Content.Load<SpriteFont>("Dialog.spritefont");
+            Barman = new Actor(BarmanSprite, Gender.male, "Barman", Stat.desperate, DialogBack, DialogFont);
+            Bouncer = new Actor(BarmanSprite, Gender.male, "Bouncer", Stat.angry, DialogBack, DialogFont);
 
+            ActiveActor = Bouncer;
 
             // TODO: use this.Content to load your game content here
         }
@@ -78,8 +89,12 @@ namespace Conversation
             // Allows the game to exit
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
-
             // TODO: Add your update logic here
+
+            if (ActiveActor != null)
+                ActiveActor.Update(gameTime);
+
+
 
             base.Update(gameTime);
         }

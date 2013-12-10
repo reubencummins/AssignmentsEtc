@@ -30,7 +30,7 @@ namespace Conversation
         {
             base.Draw(spriteBatch);
             spriteBatch.Begin();
-            spriteBatch.DrawString(Font,Text,position,Color.White);
+            spriteBatch.DrawString(Font,Text,(position),Color.White);
             spriteBatch.End();
         }
     }

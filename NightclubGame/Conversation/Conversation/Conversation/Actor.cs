@@ -37,7 +37,7 @@ namespace Conversation
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public override void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Begin();
             spriteBatch.Draw(spriteImage,new Rectangle(50,50,spriteImage.Width,spriteImage.Height), Color.White);
